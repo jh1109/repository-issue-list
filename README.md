@@ -1,46 +1,25 @@
-# Getting Started with Create React App
+# A Repository Issue List
+GitHub REST API를 사용하여 특정 github repository의 이슈 목록을 확인하는 웹 사이트 입니다.
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+> 원티드 프리온보딩 프론트엔드 인턴십 3주차 과제  
+> 목표 : 특정 깃헙 [레파지토리](https://github.com/facebook/react/issues)의 이슈 목록과 상세 내용을 확인하는 웹 사이트 구축
 
-## Available Scripts
+## 주요 전략
+- 유지보수를 위해 HTTP 통신과 사용하고자 하는 GitHub REST API를 호출하는 class를 각각 분리(`httpClient.ts` & `IssueService.ts`)
+- 재사용성을 위해 `Date`값에서 년, 월, 일만 참조하는 유틸 함수 생성
+- 반응형 웹 사이트
 
-In the project directory, you can run:
+## 요구 사항
+### 1. 이슈 목록 화면
+- [x] Context API를 활용한 API 연동으로 이슈 목록 가져오기
+- [x] 이슈 목록 데이터 요청 중 로딩 표시
+- [x] open 상태 데이터 요청 및 표시 : List repository issues API 사용
 
-### `npm start`
+## 프로젝트 사용법
+```
+npm install & npm start
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+# or
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
-
-### `npm test`
-
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
-
-### `npm run build`
-
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
-
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
-
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
-
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
+yarn install & yarn start
+```

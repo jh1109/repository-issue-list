@@ -10,6 +10,10 @@ const GlobalStyle = createGlobalStyle`
     padding: 0;
   }
   
+  body {
+    background: #e9ecef;
+  }
+
   ul,li {
     list-style: none;
   }
