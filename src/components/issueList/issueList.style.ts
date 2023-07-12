@@ -1,7 +1,7 @@
 import { styled } from 'styled-components';
 
 /* IssueList */
-export const IssueListStyle = styled.ul`
+export const MainStyle = styled.main`
   padding-top: 4rem;
   width: 40rem;
   background: white;
