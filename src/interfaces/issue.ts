@@ -3,7 +3,7 @@ interface Issue {
   issueNumber: number;
   title: string;
   user: { login: string; avatar_url: string };
-  date: object;
+  date: Date;
   comments: number;
   content: string;
 }
