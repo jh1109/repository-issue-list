@@ -8,8 +8,12 @@ import React, {
 import Issue from '../interfaces/issue';
 import { IssueService } from '../services/IssueService';
 
-const IssueContext = React.createContext<{ issues: Issue[] }>({
+const IssueContext = React.createContext<{
+  issues: Issue[];
+  isLoading: boolean;
+}>({
   issues: [],
+  isLoading: false,
 });
 
 export const useIssue = () => useContext(IssueContext);
@@ -19,8 +23,10 @@ export const IssueProvider: React.FC<{
   issueService: IssueService;
 }> = ({ issueService, children }) => {
   const [issues, setIssues] = useState<Issue[]>([]);
+  const [isLoading, setIsLoading] = useState(false);
 
   const fetchIssuesHandler = useCallback(async () => {
+    setIsLoading(true);
     try {
       const data = await issueService.get();
 
@@ -44,6 +50,7 @@ export const IssueProvider: React.FC<{
     } catch (error: any) {
       alert(error.message);
     }
+    setIsLoading(false);
   }, [issueService]);
 
   useEffect(() => {
@@ -51,9 +58,8 @@ export const IssueProvider: React.FC<{
   }, [fetchIssuesHandler]);
 
   return (
-    <IssueContext.Provider value={{ issues: issues }}>
-      {' '}
-      {children}{' '}
+    <IssueContext.Provider value={{ issues: issues, isLoading: isLoading }}>
+      {children}
     </IssueContext.Provider>
   );
 };
