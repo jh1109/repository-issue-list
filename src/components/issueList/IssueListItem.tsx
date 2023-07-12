@@ -1,11 +1,17 @@
 import React from 'react';
-import { styled } from 'styled-components';
 import Issue from '../../interfaces/issue';
 import {
   getDayToDate,
   getMonthToDate,
   getYearToDate,
 } from '../../utils/getFilterDate';
+import {
+  CommentStyle,
+  IssueAreaStyle,
+  IssueStyle,
+  IssueMainAreaStyle,
+  IssueSubAreaStyle,
+} from './issueList.style';
 
 const IssueListItem: React.FC<{ issue: Issue }> = ({ issue }) => {
   const date = issue.date;
@@ -14,7 +20,7 @@ const IssueListItem: React.FC<{ issue: Issue }> = ({ issue }) => {
   const day = getDayToDate(date);
   const newDate = `${year} ${month} ${day}`;
   return (
-    <IssueLiStyle>
+    <IssueStyle>
       <section>
         <IssueAreaStyle>
           <IssueMainAreaStyle>
@@ -28,61 +34,8 @@ const IssueListItem: React.FC<{ issue: Issue }> = ({ issue }) => {
         </IssueAreaStyle>
         <CommentStyle>{`코멘트: ${issue.comments}`}</CommentStyle>
       </section>
-    </IssueLiStyle>
+    </IssueStyle>
   );
 };
-
-const IssueLiStyle = styled.li`
-  background: white;
-  padding: 0.6rem;
-
-  & + & {
-    border-top: 1px solid #dee2e6;
-  }
-
-  section {
-    display: flex;
-    flex-flow: row nowrap;
-    align-items: center;
-    gap: 0.6rem;
-  }
-`;
-
-const IssueAreaStyle = styled.div`
-  flex-grow: 1;
-  white-space: nowrap;
-  overflow: hidden;
-`;
-
-const IssueMainAreaStyle = styled.div`
-  display: flex;
-  flex-flow: row nowrap;
-  gap: 0.5rem;
-  font-size: 1.2rem;
-  margin-bottom: 0.5rem;
-  font-weight: 700;
-
-  h3 {
-    overflow: hidden;
-    text-overflow: ellipsis;
-  }
-`;
-
-const IssueSubAreaStyle = styled.div`
-  font-size: 1rem;
-  display: flex;
-  flex-flow: row nowrap;
-  gap: 0.5rem;
-
-  span {
-    overflow: hidden;
-    text-overflow: ellipsis;
-  }
-`;
-
-const CommentStyle = styled.span`
-  flex-shrink: 1;
-  white-space: nowrap;
-`;
 
 export default IssueListItem;

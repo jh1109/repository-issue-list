@@ -1,7 +1,7 @@
 import React from 'react';
-import { styled } from 'styled-components';
 import Issue from '../../interfaces/issue';
 import IssueListItem from './IssueListItem';
+import { IssueListStyle } from './issueList.style';
 
 const IssueList: React.FC<{ issues: Issue[] }> = props => {
   return (
@@ -13,14 +13,4 @@ const IssueList: React.FC<{ issues: Issue[] }> = props => {
   );
 };
 
-const IssueListStyle = styled.ul`
-  padding-top: 4rem;
-  width: 40rem;
-  background: white;
-  margin: auto;
-
-  @media (max-width: 768px) {
-    width: 100%;
-  }
-`;
 export default IssueList;
