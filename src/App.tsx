@@ -2,13 +2,14 @@ import Header from './components/layout/Header';
 import GlobalStyle from './GlobalStyle';
 import IssueList from './components/issueList/IssueList';
 import { useIssue } from './store/issueContext';
+import { styled } from 'styled-components';
 
 function App() {
   const { issues, isLoading } = useIssue();
 
-  let content = <p>issues가 없습니다!</p>;
+  let content = <PStyle>issues가 없습니다!</PStyle>;
   if (isLoading) {
-    content = <p>issues 불러오는 중...</p>;
+    content = <PStyle>issues 불러오는 중...</PStyle>;
   }
   if (issues.length > 0) {
     content = <IssueList issues={issues} />;
@@ -22,4 +23,17 @@ function App() {
   );
 }
 
+const PStyle = styled.p`
+  padding-top: 4rem;
+  width: 40rem;
+  height: 100vh;
+  background: white;
+  margin: auto;
+  font-size: 1.4rem;
+  padding-left: 0.6rem;
+
+  @media (max-width: 768px) {
+    width: 100%;
+  }
+`;
 export default App;
