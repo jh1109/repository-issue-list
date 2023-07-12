@@ -15,6 +15,7 @@ const HeaderStyle = styled.header`
   top: 0;
   left: 50%;
   transform: translateX(-50%);
+  height: 4rem;
   background: skyblue;
   width: 40rem;
   margin: auto;
@@ -22,6 +23,7 @@ const HeaderStyle = styled.header`
   flex-flow: row nowrap;
   gap: 0.4rem;
   justify-content: center;
+  align-items: center;
   font-size: 2rem;
   padding-top: 0.8rem;
   padding-bottom: 0.8rem;

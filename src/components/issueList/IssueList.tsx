@@ -1,12 +1,13 @@
 import React from 'react';
 import { styled } from 'styled-components';
 import Issue from '../../interfaces/issue';
+import IssueListItem from './IssueListItem';
 
 const IssueList: React.FC<{ issues: Issue[] }> = props => {
   return (
     <IssueListStyle>
       {props.issues.map(issue => (
-        <li key={issue.id}>{issue.title}</li>
+        <IssueListItem key={issue.id} issue={issue} />
       ))}
     </IssueListStyle>
   );
