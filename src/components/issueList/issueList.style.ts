@@ -1,17 +1,5 @@
 import { styled } from 'styled-components';
 
-/* IssueList */
-export const MainStyle = styled.main`
-  padding-top: 4rem;
-  width: 40rem;
-  background: white;
-  margin: auto;
-
-  @media (max-width: 768px) {
-    width: 100%;
-  }
-`;
-
 /* IssueListItem */
 export const IssueStyle = styled.li`
   background: white;

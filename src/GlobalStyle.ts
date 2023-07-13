@@ -14,6 +14,18 @@ const GlobalStyle = createGlobalStyle`
     background: #e9ecef;
   }
 
+  main {
+    padding-top: 4rem;
+    width: 40rem;
+    height: 100vh;
+    background: white;
+    margin: auto;
+
+    @media (max-width: 768px) {
+      width: 100%;
+    }
+  }
+
   ul,li {
     list-style: none;
   }

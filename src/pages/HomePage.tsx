@@ -16,22 +16,13 @@ const HomePage = () => {
   return (
     <>
       <Header />
-      {content}
+      <main>{content}</main>
     </>
   );
 };
 
 const PStyle = styled.p`
-  padding-top: 4rem;
-  width: 40rem;
-  height: 100vh;
-  background: white;
-  margin: auto;
   font-size: 1.4rem;
   padding-left: 0.6rem;
-
-  @media (max-width: 768px) {
-    width: 100%;
-  }
 `;
 export default HomePage;
