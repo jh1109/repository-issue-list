@@ -45,6 +45,16 @@ export const IssueProvider: React.FC<{
           content: loadedIssue.body,
         });
 
+        loadedIssues.sort((a: Issue, b: Issue) => {
+          if (a.comments > b.comments) {
+            return -1;
+          }
+          if (a.comments < b.comments) {
+            return 1;
+          }
+          return 0;
+        });
+
         setIssues(loadedIssues);
       }
     } catch (error: any) {
