@@ -1,5 +1,4 @@
 import { styled } from 'styled-components';
-import Header from '../components/layout/Header';
 import { useIssue } from '../store/issueContext';
 import IssueList from '../components/issueList/IssueList';
 
@@ -13,12 +12,7 @@ const HomePage = () => {
   if (issues.length > 0) {
     content = <IssueList issues={issues} />;
   }
-  return (
-    <>
-      <Header />
-      <main>{content}</main>
-    </>
-  );
+  return <>{content}</>;
 };
 
 const PStyle = styled.p`
