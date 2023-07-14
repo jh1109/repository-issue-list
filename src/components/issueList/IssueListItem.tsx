@@ -12,6 +12,7 @@ import {
   IssueMainAreaStyle,
   IssueSubAreaStyle,
 } from './issueList.style';
+import { Link } from 'react-router-dom';
 
 const IssueListItem: React.FC<{ issue: Issue }> = ({ issue }) => {
   const date = issue.date;
@@ -21,19 +22,21 @@ const IssueListItem: React.FC<{ issue: Issue }> = ({ issue }) => {
   const newDate = `${year} ${month} ${day}`;
   return (
     <IssueStyle>
-      <section>
-        <IssueAreaStyle>
-          <IssueMainAreaStyle>
-            <span>{`#${issue.issueNumber}`}</span>
-            <h3>{issue.title}</h3>
-          </IssueMainAreaStyle>
-          <IssueSubAreaStyle>
-            <span>{`작성자: ${issue.user.login}`}</span>
-            <span>{`작성일: ${newDate}`}</span>
-          </IssueSubAreaStyle>
-        </IssueAreaStyle>
-        <CommentStyle>{`코멘트: ${issue.comments}`}</CommentStyle>
-      </section>
+      <Link to={`/issues/${issue.issueNumber}`}>
+        <section>
+          <IssueAreaStyle>
+            <IssueMainAreaStyle>
+              <span>{`#${issue.issueNumber}`}</span>
+              <h3>{issue.title}</h3>
+            </IssueMainAreaStyle>
+            <IssueSubAreaStyle>
+              <span>{`작성자: ${issue.user.login}`}</span>
+              <span>{`작성일: ${newDate}`}</span>
+            </IssueSubAreaStyle>
+          </IssueAreaStyle>
+          <CommentStyle>{`코멘트: ${issue.comments}`}</CommentStyle>
+        </section>
+      </Link>
     </IssueStyle>
   );
 };
