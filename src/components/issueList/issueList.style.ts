@@ -3,10 +3,21 @@ import { styled } from 'styled-components';
 /* IssueListItem */
 export const IssueStyle = styled.li`
   background: white;
-  padding: 0.6rem;
 
   & + & {
     border-top: 1px solid #dee2e6;
+  }
+
+  a {
+    padding: 0.6rem;
+    display: block;
+    text-decoration: none;
+    color: inherit;
+
+    &:hover,
+    &:focus {
+      background: #f2f4f7;
+    }
   }
 
   section {
