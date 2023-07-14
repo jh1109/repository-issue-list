@@ -8,7 +8,7 @@ export class IssueService {
 
   async get() {
     const response = await this.httpClient.fetch(
-      'repos/facebook/react/issues',
+      'repos/facebook/react/issues?sort=comments',
       {
         method: 'GET',
         headers: {
