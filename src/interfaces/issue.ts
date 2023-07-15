@@ -1,11 +1,16 @@
 interface Issue {
   id: number;
-  issueNumber: number;
+  number: number;
   title: string;
   user: { login: string; avatar_url: string };
-  date: Date;
+  created_at: Date;
   comments: number;
-  content: string;
+  body: string;
+}
+
+export interface Repository {
+  owner: string;
+  repo: string;
 }
 
 export default Issue;

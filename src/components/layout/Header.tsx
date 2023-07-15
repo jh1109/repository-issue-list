@@ -1,11 +1,13 @@
 import { styled } from 'styled-components';
+import { useIssue } from '../../store/issueContext';
 
 const Header = () => {
+  const { repository } = useIssue();
   return (
     <HeaderStyle>
-      <h1>facebook</h1>
+      <h1>{repository.owner}</h1>
       <span>/</span>
-      <h2>react</h2>
+      <h2>{repository.repo}</h2>
     </HeaderStyle>
   );
 };

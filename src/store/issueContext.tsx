@@ -5,15 +5,17 @@ import React, {
   ReactNode,
   useCallback,
 } from 'react';
-import Issue from '../interfaces/issue';
+import Issue, { Repository } from '../interfaces/issue';
 import { IssueService } from '../services/IssueService';
 
 const IssueContext = React.createContext<{
   issues: Issue[];
   isLoading: boolean;
+  repository: Repository;
 }>({
   issues: [],
   isLoading: false,
+  repository: { owner: '', repo: '' },
 });
 
 export const useIssue = () => useContext(IssueContext);
@@ -24,29 +26,23 @@ export const IssueProvider: React.FC<{
 }> = ({ issueService, children }) => {
   const [issues, setIssues] = useState<Issue[]>([]);
   const [isLoading, setIsLoading] = useState(false);
+  const [repository, setRepository] = useState<Repository>({
+    owner: '',
+    repo: '',
+  });
 
   const fetchIssuesHandler = useCallback(async () => {
     setIsLoading(true);
+    setRepository({ owner: 'facebook', repo: 'react' });
+
     try {
-      const data = await issueService.get();
-
-      let loadedIssues = [];
-      for (const loadedIssue of data) {
-        loadedIssues.push({
-          id: loadedIssue.id,
-          issueNumber: loadedIssue.number,
-          title: loadedIssue.title,
-          user: {
-            login: loadedIssue.user.login,
-            avatar_url: loadedIssue.user.avatar_url,
-          },
-          date: new Date(loadedIssue.created_at),
-          comments: loadedIssue.comments,
-          content: loadedIssue.body,
-        });
-
-        setIssues(loadedIssues);
-      }
+      const data = await issueService.getIssues(
+        'facebook',
+        'react',
+        'sort=comments'
+      );
+      const filteredIssues: Issue[] = issueService.filterIssue(data);
+      setIssues(filteredIssues);
     } catch (error: any) {
       alert(error.message);
     }
@@ -58,7 +54,9 @@ export const IssueProvider: React.FC<{
   }, [fetchIssuesHandler]);
 
   return (
-    <IssueContext.Provider value={{ issues: issues, isLoading: isLoading }}>
+    <IssueContext.Provider
+      value={{ issues: issues, isLoading: isLoading, repository }}
+    >
       {children}
     </IssueContext.Provider>
   );
