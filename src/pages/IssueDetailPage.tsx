@@ -14,13 +14,11 @@ const IssueDetailPage = () => {
 
   const { issues } = useIssue();
 
-  const issue = issues.find(
-    (issue: Issue) => issue.issueNumber === issueNumber
-  );
+  const issue = issues.find((issue: Issue) => issue.number === issueNumber);
   if (issue === undefined) {
     throw new Error();
   } else {
-    const date = issue.date;
+    const date = issue.created_at;
     const year = getYearToDate(date);
     const month = getMonthToDate(date);
     const day = getDayToDate(date);
@@ -32,7 +30,7 @@ const IssueDetailPage = () => {
           <img src={issue.user.avatar_url} alt="작성자의 프로필 이미지" />
           <div>
             <div className="titleArea">
-              <span>{`#${issue.issueNumber}`}</span>
+              <span>{`#${issue.number}`}</span>
               <p>{issue.title}</p>
             </div>
             <div className="subArea">
@@ -42,7 +40,7 @@ const IssueDetailPage = () => {
             </div>
           </div>
         </div>
-        <p>{issue.content}</p>
+        <p>{issue.body}</p>
       </DetailContainerStayle>
     );
   }

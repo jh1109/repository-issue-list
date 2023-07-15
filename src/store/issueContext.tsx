@@ -28,25 +28,14 @@ export const IssueProvider: React.FC<{
   const fetchIssuesHandler = useCallback(async () => {
     setIsLoading(true);
     try {
-      const data = await issueService.get();
+      const data = await issueService.getIssues(
+        'facebook',
+        'react',
+        'sort=comments'
+      );
+      const filteredIssues: Issue[] = issueService.filterIssue(data);
 
-      let loadedIssues = [];
-      for (const loadedIssue of data) {
-        loadedIssues.push({
-          id: loadedIssue.id,
-          issueNumber: loadedIssue.number,
-          title: loadedIssue.title,
-          user: {
-            login: loadedIssue.user.login,
-            avatar_url: loadedIssue.user.avatar_url,
-          },
-          date: new Date(loadedIssue.created_at),
-          comments: loadedIssue.comments,
-          content: loadedIssue.body,
-        });
-
-        setIssues(loadedIssues);
-      }
+      setIssues(filteredIssues);
     } catch (error: any) {
       alert(error.message);
     }

@@ -15,18 +15,18 @@ import {
 import { Link } from 'react-router-dom';
 
 const IssueListItem: React.FC<{ issue: Issue }> = ({ issue }) => {
-  const date = issue.date;
+  const date = issue.created_at;
   const year = getYearToDate(date);
   const month = getMonthToDate(date);
   const day = getDayToDate(date);
   const newDate = `${year} ${month} ${day}`;
   return (
     <IssueStyle>
-      <Link to={`/issues/${issue.issueNumber}`}>
+      <Link to={`/issues/${issue.number}`}>
         <section>
           <IssueAreaStyle>
             <IssueMainAreaStyle>
-              <span>{`#${issue.issueNumber}`}</span>
+              <span>{`#${issue.number}`}</span>
               <h3>{issue.title}</h3>
             </IssueMainAreaStyle>
             <IssueSubAreaStyle>
