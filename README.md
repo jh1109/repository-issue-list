@@ -38,30 +38,12 @@
 - [x] organization name / repository name 표시
 - 불필요한 렌더링을 막기 위해 `<Outlet />` 사용하여 **중첩 라우트**
 - 공통되는 컴포넌트 및 UI는 `<RootLayout `/>에서 관리
-<br>
-
 ### 3. 이슈 상세 화면
 - [x] list에서 issue 클릭시 해당 이슈의 상세 내용 표시 - 이슈번호, 이슈제목, 작성자, 작성일, 코멘트 수, 작성자 프로필 이미지, 본문 표시
 ![상세페이지](https://github.com/jh1109/repository-issue-list/assets/117807467/ac4dbf7a-e82c-4040-9632-90656eb4bbab)
-<br>
-
 ### 4. 에러 화면 구현
 ![errord](https://github.com/jh1109/repository-issue-list/assets/117807467/f456987b-8480-420d-9eb3-8473a294cace)
 - 상위 라우트 `errorElement` propterty에 의해 `<ErrorPage />` 로딩
-
-
-### 2. 이슈 상세 화면
-- [ ] 이슈의 상세 내용 표시
-- [ ] '이슈변호, 이슈제목, 작성자, 작성일, 코멘트 수, 작성자 프로필 이미지, 본문' 표시
-
-### 3. 공통 헤더
-- [x] 두 페이지는 공통 헤더 공유
-  - `<RootLayout />`를 만들어 라우트 중첩
-  - 유지보수를 위해 `<RootLayout />`과 `<Header />` 컴포넌트 관심사 분리
-
-### 4. 그 외
-- [x] 에러 화면 구현
-  - 루트 라우트의 `errorElement property`를 사용하여 에러 화면 구현
 
 ## 프로젝트 사용법
 ```
