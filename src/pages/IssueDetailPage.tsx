@@ -50,6 +50,7 @@ const IssueDetailPage = () => {
 
 const DetailContainerStayle = styled.div`
   padding: 0.4rem;
+  background: white;
 
   .imgIssueInfo {
     display: flex;
