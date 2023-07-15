@@ -8,4 +8,9 @@ interface Issue {
   body: string;
 }
 
+export interface Repository {
+  owner: string;
+  repo: string;
+}
+
 export default Issue;
