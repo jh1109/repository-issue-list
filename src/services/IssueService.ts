@@ -17,7 +17,7 @@ export class IssueService {
     this.repo = repo;
     const noOptions = options.trim().length === 0;
     const response = await this.httpClient.fetch(
-      `repos/${owner}/${repo}/issues${noOptions ? '' : `?${options}`}`,
+      `/repos/${owner}/${repo}/issues${noOptions ? '' : `?${options}`}`,
       {
         method: 'GET',
         headers: {
