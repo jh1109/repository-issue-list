@@ -8,7 +8,7 @@ const root = ReactDOM.createRoot(
   document.getElementById('root') as HTMLElement
 );
 
-const httpClient = new HttpClient('https://api.github.com/');
+const httpClient = new HttpClient('https://api.github.com');
 const issueService = new IssueService(httpClient);
 
 root.render(
